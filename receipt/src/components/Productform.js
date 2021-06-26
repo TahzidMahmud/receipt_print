@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useContext, useEffect } from "react";
+import { DataContext } from "../App";
 const Productform = () => {
+  const context = useContext(DataContext);
+
   const [name, setName] = useState("");
   const [serial, setSerial] = useState("");
   const [warranty, setWarranty] = useState(0);
@@ -12,17 +14,18 @@ const Productform = () => {
   }, [price, quantity]);
   const handleProduct = (e) => {
     e.preventDefault();
-    localStorage.setItem(
-      "products",
-      JSON.stringify({
+    let temp = [
+      ...context.State,
+      {
         name: name,
         serial: serial,
         warrenty: warranty,
         price: price,
         quantity: quantity,
         total: total,
-      })
-    );
+      },
+    ];
+    context.Dispatch({ type: "add", payload: temp });
   };
   return (
     <div>

@@ -19,11 +19,11 @@ function App() {
     newarr = [];
   }
   const [Data, setData] = useState(newarr);
-  console.log(Data);
+
   function reducer(state, action) {
-    switch (action) {
-      case "reset":
-        return Data;
+    switch (action.type) {
+      case "add":
+        return [action.payload];
       default:
         return Data;
     }
@@ -36,7 +36,7 @@ function App() {
       <div className="container">
         <DataContext.Provider value={{ State: product, Dispatch: dispatch }}>
           <h1 className="text-center">General Information Form</h1>
-          <Form />
+          <Form value={{ State: product, Dispatch: dispatch }} />
           <br></br>
           <Productform></Productform>
           <h2 className="text text-center">Product Table</h2>
