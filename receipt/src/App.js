@@ -2,48 +2,30 @@
 import React from "react";
 import Form from "./components/form";
 import Productform from "./components/Productform";
+import { Table } from "./components/Table";
 
 import "./App.css";
 import "./bootstrap.css";
+
+const Data = {
+  customer: {},
+  products: [],
+};
+export const DataContext = React.createContext(Data);
 
 function App() {
   return (
     <div className="App">
       <div className="container">
-        <h1 className="text-center">General Information Form</h1>
-        <Form />
-        <br></br>
-        <Productform></Productform>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
+        <DataContext.Provider value={Data}>
+          <h1 className="text-center">General Information Form</h1>
+          <Form />
+          <br></br>
+          <Productform></Productform>
+          <h2 className="text text-center">Product Table</h2>
+          <hr></hr>
+          <Table />
+        </DataContext.Provider>
       </div>
     </div>
   );

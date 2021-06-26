@@ -18,7 +18,7 @@ const Form = () => {
           onChange={(e) => {
             setName(e.target.value);
           }}
-          placeholder="Enter email"
+          placeholder="Enter Customer Name"
         />
       </div>
       <div className="form-group">
@@ -31,11 +31,11 @@ const Form = () => {
           onChange={(e) => {
             setAddress(e.target.value);
           }}
-          placeholder="Password"
+          placeholder="Enter Customer Address"
         />
       </div>
       <div className="form-group">
-        <label htmlFor="exampleInputPassword1">Customer Address</label>
+        <label htmlFor="exampleInputPassword1">Customer Phone</label>
         <input
           value={phone}
           type="text"
@@ -44,7 +44,7 @@ const Form = () => {
           onChange={(e) => {
             setPhone(e.target.value);
           }}
-          placeholder="Password"
+          placeholder="Enter Customer Phone"
         />
       </div>
       <br></br>
