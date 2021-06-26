@@ -10,10 +10,23 @@ const Productform = () => {
   useEffect(() => {
     setTotal(price * quantity);
   }, [price, quantity]);
-
+  const handleProduct = (e) => {
+    e.preventDefault();
+    localStorage.setItem(
+      "products",
+      JSON.stringify({
+        name: name,
+        serial: serial,
+        warrenty: warranty,
+        price: price,
+        quantity: quantity,
+        total: total,
+      })
+    );
+  };
   return (
     <div>
-      <form>
+      <form onSubmit={handleProduct}>
         <div className="row">
           <div className="form-group col-md-3 col-sm-12">
             <label>Product Name</label>
@@ -72,7 +85,12 @@ const Productform = () => {
           </div>
           <div className="form-group col-md-2 col-sm-12">
             <label>Total</label>
-            <input type="number" value={total} className="form-control" />
+            <input
+              type="number"
+              value={total}
+              className="form-control"
+              readOnly
+            />
           </div>
         </div>
         <br></br>

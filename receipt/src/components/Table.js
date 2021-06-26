@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { DataContext } from "../App";
 
 export const Table = () => {
@@ -6,7 +6,7 @@ export const Table = () => {
   //   const [address, setAddress] = useState(value);
 
   useEffect(() => {
-    console.log(value);
+    // console.log(value);
   }, []);
 
   return (

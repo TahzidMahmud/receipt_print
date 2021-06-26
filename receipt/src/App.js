@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/heading-has-content */
-import React from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import Form from "./components/form";
 import Productform from "./components/Productform";
 import { Table } from "./components/Table";
@@ -7,17 +7,34 @@ import { Table } from "./components/Table";
 import "./App.css";
 import "./bootstrap.css";
 
-const Data = {
-  customer: {},
-  products: [],
-};
-export const DataContext = React.createContext(Data);
+// const Data = ;
+export const DataContext = React.createContext();
 
 function App() {
+  const products = JSON.parse(localStorage.getItem("products"));
+  let newarr = [];
+  if (products != null) {
+    newarr = [products];
+  } else {
+    newarr = [];
+  }
+  const [Data, setData] = useState(newarr);
+  console.log(Data);
+  function reducer(state, action) {
+    switch (action) {
+      case "reset":
+        return Data;
+      default:
+        return Data;
+    }
+  }
+
+  useEffect(() => {}, []);
+  const [product, dispatch] = useReducer(reducer, Data);
   return (
     <div className="App">
       <div className="container">
-        <DataContext.Provider value={Data}>
+        <DataContext.Provider value={{ State: product, Dispatch: dispatch }}>
           <h1 className="text-center">General Information Form</h1>
           <Form />
           <br></br>
