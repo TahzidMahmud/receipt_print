@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { DataContext } from "../App";
 
 export const Table = () => {
-  const value = useContext(DataContext);
+  const context = useContext(DataContext);
   //   const [address, setAddress] = useState(value);
 
   useEffect(() => {
@@ -24,15 +24,20 @@ export const Table = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>nubhj</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-          </tr>
+          {context.State.map((product, index) => {
+            const { name, price, quantity, serial, total, warrenty } = product;
+            return (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{name}</td>
+                <td>{serial}</td>
+                <td>{warrenty}</td>
+                <td>{price}</td>
+                <td>{quantity}</td>
+                <td>{total}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
