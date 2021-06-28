@@ -11,10 +11,14 @@ import "./bootstrap.css";
 export const DataContext = React.createContext();
 
 function App() {
-  const products = JSON.parse(localStorage.getItem("products"));
+  let products = null;
+  if (localStorage.getItem("products")) {
+    products = JSON.parse(localStorage.getItem("products"));
+  }
+
   let newarr = [];
   if (products != null) {
-    newarr = [products];
+    newarr = products;
   } else {
     newarr = [];
   }
@@ -23,14 +27,16 @@ function App() {
   function reducer(state, action) {
     switch (action.type) {
       case "add":
-        return [action.payload];
+        console.log(Data);
+        localStorage.setItem("products", JSON.stringify(action.payload));
+        return action.payload;
       default:
         return Data;
     }
   }
-
-  useEffect(() => {}, []);
   const [product, dispatch] = useReducer(reducer, Data);
+  useEffect(() => {}, []);
+
   return (
     <div className="App">
       <div className="container">

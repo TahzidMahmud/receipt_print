@@ -5,9 +5,7 @@ export const Table = () => {
   const context = useContext(DataContext);
   //   const [address, setAddress] = useState(value);
 
-  useEffect(() => {
-    // console.log(value);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div>
