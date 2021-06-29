@@ -48,7 +48,7 @@ export const Table = () => {
         <div className="col-md-4 col-sm-4"></div>
         <div className="col-md-4 col-sm-4 d-flex flex-row-reverse ">
           <Link to="/print">
-            <button className="btn btn-lg btn-info text-light ">Print</button>
+            <button className="btn btn-lg btn-info text-light ">Proceed</button>
           </Link>
         </div>
       </div>
