@@ -1,8 +1,11 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 import React, { useReducer, useEffect, useState } from "react";
-import Form from "./components/form";
-import Productform from "./components/Productform";
-import { Table } from "./components/Table";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import Form from "./components/form";
+// import Productform from "./components/Productform";
+// import { Table } from "./components/Table";
+import Home from "./components/Home";
+import Printpreview from "./components/Printpreview";
 
 import "./App.css";
 import "./bootstrap.css";
@@ -38,16 +41,15 @@ function App() {
   useEffect(() => {}, []);
 
   return (
-    <div className="App">
+    <div className="mh">
       <div className="container">
         <DataContext.Provider value={{ State: product, Dispatch: dispatch }}>
-          <h1 className="text-center">General Information Form</h1>
-          <Form value={{ State: product, Dispatch: dispatch }} />
-          <br></br>
-          <Productform></Productform>
-          <h2 className="text text-center">Product Table</h2>
-          <hr></hr>
-          <Table />
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/print" component={Printpreview} />
+            </Switch>
+          </Router>
         </DataContext.Provider>
       </div>
     </div>
