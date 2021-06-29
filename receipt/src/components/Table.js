@@ -16,7 +16,6 @@ export const Table = () => {
           <button
             className="btn btn-danger col-md-2 col-sm-2"
             onClick={() => {
-              console.log("hit");
               localStorage.removeItem("products");
               window.location.reload();
             }}
