@@ -3,6 +3,7 @@ import { infoContext } from "../App";
 
 const Form = () => {
   const context = useContext(infoContext);
+
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
@@ -20,10 +21,17 @@ const Form = () => {
     setAddress("");
     setPhone("");
   };
+  useEffect(() => {
+    if (context.Client.type) {
+      setName(context.Client.name);
+      setAddress(context.Client.address);
+      setPhone(context.Client.phone);
+    }
+  }, [context]);
 
   return (
     <>
-      {context.Client.name ? (
+      {context.Client.name && !context.Client.type ? (
         <>
           <div className="card">
             <div className="card-header">
@@ -54,6 +62,7 @@ const Form = () => {
                           name: context.Client.name,
                           address: context.Client.address,
                           phone: context.Client.phone,
+                          type: "edit",
                         },
                       });
                     }}
@@ -124,7 +133,7 @@ const Form = () => {
             </div>
             <br></br>
             <button type="submit" className="btn btn-primary">
-              Submit
+              {context.Client.type ? "Update" : "Submit"}
             </button>
           </form>
         </>
