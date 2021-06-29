@@ -9,6 +9,7 @@ import Printpreview from "./components/Printpreview";
 
 import "./App.css";
 import "./bootstrap.css";
+import { act } from "@testing-library/react";
 
 // const Data = ;
 export const DataContext = React.createContext();
@@ -30,11 +31,16 @@ function App() {
   function reducer(state, action) {
     switch (action.type) {
       case "add":
-        console.log(Data);
         localStorage.setItem("products", JSON.stringify(action.payload));
         return action.payload;
+      case "minus":
+        localStorage.removeItem("products");
+        console.log(action.payload);
+        state.splice(parseInt(action.payload), parseInt(1));
+        localStorage.setItem("products", JSON.stringify(state));
+        return [...state];
       default:
-        return Data;
+        return state;
     }
   }
   const [product, dispatch] = useReducer(reducer, Data);

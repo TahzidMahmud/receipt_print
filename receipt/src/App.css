@@ -13,7 +13,7 @@
   }
 }
 .tbl{
-  height: 50vh!important;
+  max-height: 30vh!important;
   overflow-y: scroll!important;
 }
 .mh{

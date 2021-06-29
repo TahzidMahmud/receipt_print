@@ -26,6 +26,12 @@ const Productform = () => {
       },
     ];
     context.Dispatch({ type: "add", payload: temp });
+    setName("");
+    setSerial("");
+    setWarranty(0);
+    setPrice(0);
+    setQuantity(0);
+    setTotal(0);
   };
   return (
     <div>

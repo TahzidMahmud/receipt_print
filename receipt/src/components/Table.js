@@ -10,8 +10,26 @@ export const Table = () => {
 
   return (
     <>
+      <div className="row">
+        <h2 className="text text-center col-md-10 col-sm-10">Product Table</h2>
+        {context.State.length > 0 ? (
+          <button
+            className="btn btn-danger col-md-2 col-sm-2"
+            onClick={() => {
+              console.log("hit");
+              localStorage.removeItem("products");
+              window.location.reload();
+            }}
+          >
+            Clear Table
+          </button>
+        ) : (
+          <></>
+        )}
+      </div>
+      <hr></hr>
       <div className="table-responsive">
-        <table className="table table-hover tbl">
+        <table className="table table-hover">
           <thead>
             <tr>
               <th scope="col">Sr</th>
@@ -21,9 +39,10 @@ export const Table = () => {
               <th scope="col">Price</th>
               <th scope="col">Quantity</th>
               <th scope="col">Total</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="tbl">
             {context.State.map((product, index) => {
               const { name, price, quantity, serial, total, warrenty } =
                 product;
@@ -36,6 +55,19 @@ export const Table = () => {
                   <td>{price}</td>
                   <td>{quantity}</td>
                   <td>{total}</td>
+                  <td>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => {
+                        context.Dispatch({
+                          type: "minus",
+                          payload: parseInt(index),
+                        });
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               );
             })}
