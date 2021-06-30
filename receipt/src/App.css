@@ -6,6 +6,15 @@
   height: 40vmin;
   pointer-events: none;
 }
+.wid{
+  width:55vw;
+}
+.widd{
+  width:60vw;
+}
+.clr{
+  background-color: #d0dbf7;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
