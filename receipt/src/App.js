@@ -1,17 +1,12 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 import React, { useReducer, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Form from "./components/form";
-// import Productform from "./components/Productform";
-// import { Table } from "./components/Table";
 import Home from "./components/Home";
 import Printpreview from "./components/Printpreview";
 
 import "./App.css";
 import "./bootstrap.css";
-import { act } from "@testing-library/react";
 
-// const Data = ;
 export const DataContext = React.createContext();
 export const infoContext = React.createContext();
 
