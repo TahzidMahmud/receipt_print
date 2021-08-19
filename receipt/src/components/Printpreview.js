@@ -29,7 +29,7 @@ const Printpreview = () => {
               <u>INVOICE</u>
             </b>
           </h3>
-          <table className="table table-bordered">
+          <table className="table table-bordered" style="height:50vh;">
             <thead className="thead-dark clr">
               <tr>
                 <th scope="col">INVOICE NO</th>
